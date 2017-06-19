@@ -1,0 +1,217 @@
+* {margin: 0; padding: 0;}
+
+html, body {min-height: 100%;}
+
+body {
+    text-align: center;
+    padding-top: 100px;
+    background: #3b8398;
+    background: linear-gradient(#3b8398, #74fdff);
+    font-family: 'Merriweather Sans', arial, verdana;
+}
+
+.breadcrumb {
+    display: inline-block;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.35);
+    overflow: hidden;
+    border-radius: 5px;
+    counter-reset: flag; 
+}
+
+.breadcrumb a {
+    text-decoration: none;
+    outline: none;
+    display: block;
+    float: left;
+    font-size: 12px;
+    line-height: 36px;
+    color: white;
+    padding: 0 10px 0 60px;
+    background: #666;
+    background: linear-gradient(#666, #333);
+    position: relative;
+}
+.breadcrumb a:first-child {
+    padding-left: 46px;
+    border-radius: 5px 0 0 5px;
+}
+.breadcrumb a:first-child:before {
+    left: 14px;
+}
+.breadcrumb a:last-child {
+    border-radius: 0 5px 5px 0;
+    padding-right: 20px;
+}
+
+/*hover/active styles*/
+.breadcrumb a.active, .breadcrumb a:hover{
+    background: #333;
+    background: linear-gradient(#333, #000);
+}
+.breadcrumb a.active:after, .breadcrumb a:hover:after {
+    background: #333;
+    background: linear-gradient(135deg, #333, #000);
+}
+
+.breadcrumb a:after {
+    content: '';
+    position: absolute;
+    top: 0; 
+    right: -18px;
+
+    width: 36px; 
+    height: 36px;
+    transform: scale(0.707) rotate(45deg);
+    z-index: 1;
+    background: #666;
+    background: linear-gradient(135deg, #666, #333);
+
+    box-shadow: 
+        2px -2px 0 2px rgba(0, 0, 0, 0.4), 
+        3px -3px 0 2px rgba(255, 255, 255, 0.1);
+    border-radius: 0 5px 0 50px;
+}
+
+.breadcrumb a:last-child:after {
+    content: '';
+}
+
+.breadcrumb a:before {
+    content: counter(flag);
+    counter-increment: flag;
+    /*some styles now*/
+    border-radius: 100%;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    margin: 8px 0;
+    position: absolute;
+    top: 0;
+    left: 30px;
+    background: #444;
+    background: linear-gradient(#444, #222);
+    font-weight: bold;
+}
+
+
+.flat a, .flat a:after {
+    background: white;
+    color: black;
+    transition: all 0.5s;
+}
+.flat a:before {
+    background: white;
+    box-shadow: 0 0 0 1px #ccc;
+}
+.flat a:hover, .flat a.active, 
+.flat a:hover:after, .flat a.active:after{
+    background: #ff60ff;
+}
+
+.button {
+    width: 200px;
+    height: 100px;
+    display: block;                
+}
+.start {
+    background-image: url('../buttons/start.png');
+}
+.stop {
+    background-image: url('../buttons/stop.png');
+}            
+.reset {
+    background-image: url('../buttons/reset.png');
+}
+.speed1400 {
+    background-image: url('../buttons/1400.png');
+}
+.speed2800 {
+    background-image: url('../buttons/2800.png');
+} 
+.plus1 {
+    background-image: url('../buttons/plus1.png');
+}                      
+.neg1 {
+    background-image: url('../buttons/neg1.png');
+}
+.neg2 {
+    background-image: url('../buttons/neg2.png');
+}
+.neg3 {
+    background-image: url('../buttons/neg3.png');
+}
+.neg4 {
+    background-image: url('../buttons/neg4.png');
+}
+.neg5 {
+    background-image: url('../buttons/neg5.png');
+}
+.neg6 {
+    background-image: url('../buttons/neg6.png');
+}
+.neg7 {
+    background-image: url('../buttons/neg7.png');
+}
+.neg8 {
+    background-image: url('../buttons/neg8.png');
+}
+.neg9 {
+    background-image: url('../buttons/neg9.png');
+}
+.neg10 {
+    background-image: url('../buttons/neg10.png');
+}          
+.buttons-wrapper {
+    width:900px;
+    margin:auto;
+    text-align: left;
+}            
+ul#digit-buttons {
+    width:650px;
+    float:left;
+}
+ul#digit-buttons li,
+ul#control-buttons li {
+    width:201px;
+    display:inline-block;
+}
+ul#control-buttons {
+    width: 200px;
+    float:left;
+}
+span#timer-icon {
+    background-image: url('../assets/timer.gif');
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+}
+div#rate-wrapper {
+    margin:auto;
+    width: 900px;
+}
+div#rate {
+    background-image: url('../assets/currentrate.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: 600px;
+    height: 30px;
+
+} 
+div#rate img {
+    margin-left: 360px;
+    float:right;
+} 
+h1#logo {
+    display:inline-block;
+    background-image: url('../assets/logo.png');
+    width: 950px;
+    height:52px;
+    text-indent: -9999px;
+}
+div#elixir {
+    position:relative;
+    left:0;top:0;
+    width:100px;
+    height:100px;
+    background-image: url('../assets/elixir.png');
+}      
