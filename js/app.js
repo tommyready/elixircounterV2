@@ -7,33 +7,33 @@ $(function() {
 
     $('a.start').on('click', function(e){
         e.preventDefault();
-        $.fn.resetProgress(defaultTimeOut,defaultElixir); // Reset Progress
+        resetProgress(defaultTimeOut,defaultElixir); // Reset Progress
         $('span#timer').show();
         event = window.setInterval(function() {
-            $.fn.timedEvent()
+            timedEvent()
         }, timeOut);        
     });
     $('a.stop').on('click', function(e){
         e.preventDefault();
         $('span#timer').hide();
         clearInterval(event); // Stops current timed Event
-        $.fn.resetProgress(defaultTimeOut,defaultElixir); // Reset Progress
+        resetProgress(defaultTimeOut,defaultElixir); // Reset Progress
     });
     $('a.neg').on('click', function(e){
         e.preventDefault();
         var step = $(this).data('step');
-        $.fn.stepBackProgressSection(step);
+        stepBackProgressSection(step);
     });
     $('a.plus1').on('click', function(e){
         e.preventDefault();
-        $.fn.stepForwardProgressSection(1);
+        stepForwardProgressSection(1);
     });
     $('a.speed2800').on('click', function(e) { // Normal Speed Rate // DEFAULT
         e.preventDefault();
         clearInterval(event); // Stops current timed Event
-        $.fn.restTimeout(defaultTimeOut);
+        restTimeout(defaultTimeOut);
         event = window.setInterval(function() {
-            $.fn.timedEvent()
+            timedEvent()
         }, defaultTimeOut); 
         $('.rate').html(defaultTimeOut);       
     });
@@ -41,22 +41,22 @@ $(function() {
         e.preventDefault();
         var timeRate = 1400
         clearInterval(event); // Stops current timed Event
-        $.fn.restTimeout(timeRate);
+        restTimeout(timeRate);
         event = window.setInterval(function() {
-            $.fn.timedEvent()
+            timedEvent()
         }, timeRate);
         $('.rate').html(timeRate);        
     });     
 });
 
 // Functions
-$.fn.resetProgress = function(intRate,intElixir) {
+resetProgress = function(intRate,intElixir) {
     var currentActiveCount = $('a.active').length;
-    $.fn.restTimeout(intRate);
-    $.fn.stepBackProgressSection(currentActiveCount);
-    $.fn.stepForwardProgressSection(intElixir); // Always Start with 6 Progress
+    restTimeout(intRate);
+    stepBackProgressSection(currentActiveCount);
+    stepForwardProgressSection(intElixir); // Always Start with 6 Progress
 }
-$.fn.stepBackProgressSection = function(n) {
+stepBackProgressSection = function(n) {
     if( $('a.active').length < n) return;
 
     var currentProgressElement = $('div.breadcrumb a.active').last(); // Get Last Active Node
@@ -72,7 +72,7 @@ $.fn.stepBackProgressSection = function(n) {
     });
     return;
 }
-$.fn.stepForwardProgressSection = function(n) { // n equals the number of steps to move forward
+stepForwardProgressSection = function(n) { // n equals the number of steps to move forward
     if( $('a.active').length == 10) return;
     if( $('a.active').length == 0 && n >= 1) {
         $('div.breadcrumb').find('a').first().addClass('active');
@@ -92,10 +92,10 @@ $.fn.stepForwardProgressSection = function(n) { // n equals the number of steps 
     });
     return;
 }
-$.fn.timedEvent = function() {
-    $.fn.stepForwardProgressSection(1);
+timedEvent = function() {
+    stepForwardProgressSection(1);
 }
-$.fn.restTimeout = function(speed) {
+restTimeout = function(speed) {
     timeOut = speed;
     $('img#rate-img').attr('src','../assets/speed'+speed+'.png');
     return;
